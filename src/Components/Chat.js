@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import socketIOClient from 'socket.io-client';
 import { Button } from '@material-ui/core';
 import Sidebar from './Sidebar'
+import Chatroom from './Chatroom'
 import './Sidebar.css'
 const socket = socketIOClient('http://localhost:4000');
 class Chat extends Component {
@@ -35,6 +36,7 @@ class Chat extends Component {
     return (
       <div className="chatwindow">
        <Sidebar />
+       <Chatroom />
       </div>
     );
   }

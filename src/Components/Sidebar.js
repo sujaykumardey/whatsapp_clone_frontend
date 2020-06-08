@@ -30,6 +30,9 @@ var obj=[{name:'sujay dey',url:'https://images.unsplash.com/profile-144640446511
 
 
 class Sidebar extends Component {
+
+
+
   render() {
       
        
@@ -46,14 +49,14 @@ class Sidebar extends Component {
         </div>
         <div className="search">
           <div className="search-feild">
-            <SearchIcon />
+            <SearchIcon  />
             <input placeholder="Search or start new chat" />
         </div>
         </div>
 
         <div className="chatroom">
             <div className="chatroom-participants">
-            {obj.map(detail=><Participant image={detail.url} name={detail.name} phone={detail.phone} />)}        
+            {obj.map(detail=><Participant  image={detail.url} name={detail.name} phone={detail.phone} />)}        
             </div>
         </div>
       </div>

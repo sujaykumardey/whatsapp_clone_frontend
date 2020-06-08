@@ -10,11 +10,15 @@ class Participant extends Component {
 
         }
     }
+
+handleClick=()=>{
+    alert('hello')
+}
     render() {
         
         return (
             <>
-            <div className="participant-detail">
+            <div className="participant-detail"  onClick={this.handleClick}>
                 <Avatar alt="Remy Sharp" src={this.props.image} />
                 <Typography style={{marginLeft:"10px"}}>{this.props.name}</Typography>
                                 

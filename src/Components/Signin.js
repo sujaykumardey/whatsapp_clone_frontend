@@ -1,0 +1,71 @@
+import React, { Component } from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import './Signin.css'
+import { Button } from '@material-ui/core';
+
+
+
+
+class Signin extends Component {
+    render() {
+        return (
+            
+                <div className="navbar-main">
+                    <AppBar position="static" style={{height:"80px", backgroundColor:"#1ebea5"}}>
+                        <Toolbar>
+                       <Typography variant="h6" className="navbar-text" style={{flexGrow: 1}}>
+                        <img src="http://pngimg.com/uploads/whatsapp/whatsapp_PNG20.png" alt="Kiwi standing on oval" style={{width:"40px",height:"40px"}}/>
+                            WhatsApp
+                        </Typography>
+                        <Typography color="inherit" style={{marginRight:"90px",fontSize:"13px"}}>WHATSAPP WEB</Typography>
+                        <Typography color="inherit" style={{marginRight:"90px",fontSize:"13px"}}>FEATURES</Typography>
+                        <Typography color="inherit" style={{marginRight:"90px",fontSize:"13px"}}>DOWNLOAD</Typography>
+                        <Typography color="inherit" style={{marginRight:"90px",fontSize:"13px"}}>SECURITY</Typography>
+                        <Typography color="inherit" style={{marginRight:"90px",fontSize:"13px"}}>FAQ</Typography>
+                    
+                    </Toolbar>
+                    </AppBar>
+                    <div className="login-main-page">
+                        <div className="login-page" >
+                        <img src="http://pngimg.com/uploads/whatsapp/whatsapp_PNG20.png" alt="Kiwi standing on oval" style={{width:"100px",height:"100px"}}/>
+                        <Typography style={{fontSize:"25px"}}>Sign in</Typography>
+                            <form className="login-input" noValidate autoComplete="off">
+                                <TextField id="standard-basic" label="User Name" style={{width:"300px"}} />
+                                       
+                                    <InputLabel id="standard-basic-country" select label="Select" >
+                                    </InputLabel>
+                                        <Select
+                                        placeholder="sujay"
+                                        labelId="standard-basic-country"
+                                        id="standard-basic-country"
+                                        style={{width:"300px"}}
+                                        >
+                                        <MenuItem value={"INDIA"}>INDIA</MenuItem>
+                                        <MenuItem value={"AUSTRALIA"}>AUSTRALIA</MenuItem>
+                                        <MenuItem value={"ENGLAND"}>ENGLAND</MenuItem>
+                                        </Select>
+                                        <TextField id="standard-basic-phone" label="Phone" style={{width:"300px"}} />
+                                </form>
+                                <Button variant="contained" color="primary" style={{marginTop:"20px"}}>
+                                    Login
+                                </Button>
+
+                        </div>
+                    </div>
+
+                    
+                
+            </div>
+        );
+    }
+}
+
+
+
+export default Signin;

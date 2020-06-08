@@ -1,12 +1,12 @@
 import React from 'react';
-import Chat from '../src/Components/Chat';
+import Signin from '../src/Components/Signin';
 import './App.css';
 
 
 function App() {  
   return (
     <>
-    <Chat />
+    <Signin />
   </>
   );
 }

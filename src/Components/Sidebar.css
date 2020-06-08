@@ -1,7 +1,7 @@
 .chatwindow{
     display:flex;
-    width: 100vw;
-    height: 50vh;
+    width: 95vw;
+    
 }
 
 .header{
@@ -16,7 +16,8 @@
 .sidebar{   
    
     background-color: #ffffff;
-    width: 420px;
+    width: 700px;
+    border-right: 1px solid #dbd8d8;
    
 
 }
@@ -28,13 +29,13 @@
     
 }
 .search{
-padding:5px 5px 5px 5px;
-  background-color: #f8f4f4;
-  border-bottom: 1px rgb(243, 239, 239) solid;
+    padding:5px 5px 5px 5px;
+    background-color: #f8f4f4;
+    border-bottom: 1px rgb(243, 239, 239) solid;
 }
 
 .search-feild{
-
+    display: flex;
     padding:5px 16px 5px 16px;
     border-radius: 20px;
     background-color: #ffffff;
@@ -62,4 +63,39 @@ padding:5px 5px 5px 5px;
 .participant-detail:hover{
     background-color:  #ededed;
     cursor: pointer;
+}
+
+
+
+.chatroom-header{
+    display: flex;
+    justify-content: space-between;
+    padding:10px 16px 10px 16px;
+    background-color: #ededed;
+    border-bottom: 1px rgb(243, 239, 239) solid;
+   
+}
+.chatroom-chat{
+    width:70vw;
+    height: 79vh; 
+    background-image: url('../background.jpg');
+    overflow-y: scroll;
+}
+.chatroom-inputfeild{
+    bottom:0;
+    
+}
+.search-feild-footer{
+    padding:15px 16px 15px 16px;
+    background-color: #f0f0f0;
+    
+   
+}
+.input-chat{
+    width:50rem;
+    padding:10px 16px 10px 16px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    outline:none;
+    border:none;
 }
