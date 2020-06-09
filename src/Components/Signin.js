@@ -6,13 +6,43 @@ import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import './Signin.css'
 import { Button } from '@material-ui/core';
-
+import './Signin.css'
+import { io} from './Chat'
 
 
 
 class Signin extends Component {
+
+    constructor(props){
+        super(props);
+        this.state={
+            username:"",
+            country:"",
+            phone:""
+
+
+        }
+    }
+    handleUser=(e)=>{
+        this.setState({username:e.target.value})
+    }
+
+    handlePhone=(e)=>{
+        this.setState({phone:e.target.value})
+    }
+
+    userRegistration=(e)=>{
+        e.preventDefault();
+        const user={
+            username:this.state.username,
+            country:this.state.country,
+            phone:this.state.phone
+        }
+        io.emit('user',user)
+        
+    }
+
     render() {
         return (
             
@@ -36,23 +66,25 @@ class Signin extends Component {
                         <img src="http://pngimg.com/uploads/whatsapp/whatsapp_PNG20.png" alt="Kiwi standing on oval" style={{width:"100px",height:"100px"}}/>
                         <Typography style={{fontSize:"25px"}}>Sign in</Typography>
                             <form className="login-input" noValidate autoComplete="off">
-                                <TextField id="standard-basic" label="User Name" style={{width:"300px"}} />
+                                <TextField id="standard-basic" value={this.state.username} onChange={this.handleUser} label="User Name" style={{width:"300px"}} />
                                        
-                                    <InputLabel id="standard-basic-country" select label="Select" >
+                                    <InputLabel id="standard-basic-country" value='Country' label="Select" >
                                     </InputLabel>
                                         <Select
-                                        placeholder="sujay"
+                                        value={this.state.country}
+                                        onChange={(e)=>this.setState({country:e.target.value})}
                                         labelId="standard-basic-country"
                                         id="standard-basic-country"
                                         style={{width:"300px"}}
                                         >
+                                        <em>Country</em>
                                         <MenuItem value={"INDIA"}>INDIA</MenuItem>
                                         <MenuItem value={"AUSTRALIA"}>AUSTRALIA</MenuItem>
                                         <MenuItem value={"ENGLAND"}>ENGLAND</MenuItem>
                                         </Select>
-                                        <TextField id="standard-basic-phone" label="Phone" style={{width:"300px"}} />
+                                        <TextField id="standard-basic-phone" value={this.state.phone} onChange={this.handlePhone} label="Phone" style={{width:"300px"}} />
                                 </form>
-                                <Button variant="contained" color="primary" style={{marginTop:"20px"}}>
+                                <Button variant="contained" color="primary" onClick={this.userRegistration} style={{marginTop:"20px"}}>
                                     Login
                                 </Button>
 

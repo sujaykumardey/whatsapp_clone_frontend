@@ -1,6 +1,6 @@
 .chatwindow{
     display:flex;
-    width: 95vw;
+    
     
 }
 
@@ -16,18 +16,17 @@
 .sidebar{   
    
     background-color: #ffffff;
-    width: 700px;
+   
     border-right: 1px solid #dbd8d8;
    
 
 }
-.header-side-icon{
-    padding:5px;
+.header-side-icon{    
     width:150px;
     display: flex;
-    justify-content: space-between;
-    
+    justify-content: space-between;    
 }
+
 .search{
     padding:5px 5px 5px 5px;
     background-color: #f8f4f4;
@@ -55,7 +54,7 @@
 }
 
 .chatroom-participants{
-    height: 80vh;
+    height: 85vh;
     overflow-y: scroll;
 
 }
@@ -68,16 +67,16 @@
 
 
 .chatroom-header{
+    height: 60px;
     display: flex;
     justify-content: space-between;
-    padding:10px 16px 10px 16px;
     background-color: #ededed;
     border-bottom: 1px rgb(243, 239, 239) solid;
    
 }
 .chatroom-chat{
     width:70vw;
-    height: 79vh; 
+    height: 80vh; 
     background-image: url('../background.jpg');
     overflow-y: scroll;
 }
