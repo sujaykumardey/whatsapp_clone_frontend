@@ -6,6 +6,13 @@ import Sidebar from './Sidebar'
 import Chatroom from './Chatroom'
 import './Sidebar.css'
 import {socket} from './Signin'
+
+var obj=[{phone:"8776234672",sender:"sujay dey",text:"hello whats up",timestamp:"12:00am"},
+         {phone:"8776234679",sender:"sujay dey",text:"hello whats up",timestamp:"12:00am"},
+          {phone:"8776234678",sender:"sujay dey",text:"hello whats up",timestamp:"12:00am"},
+          {phone:"9939108702",sender:"sujay dey",text:"hello whats up",timestamp:"12:00am"}]
+
+
 class Chat extends Component {
   constructor(props) {
     super(props);
@@ -34,7 +41,7 @@ class Chat extends Component {
     return (
       <div className="chatwindow">
        <Sidebar obj={this.props.users} />
-       <Chatroom />
+       <Chatroom chat={obj} phone={this.props.admin.phone!==undefined ? this.props.admin.phone :null} />
       </div>
     );
   }
@@ -44,6 +51,7 @@ class Chat extends Component {
 
 const mapStateToProps = (state) => ({
   users:state.userchat.user,
+  admin:state.userchat.admin,
 });
 
 

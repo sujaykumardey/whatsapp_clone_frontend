@@ -76,8 +76,8 @@
 }
 .chatroom-chat{
     width:70vw;
-    height: 80vh; 
-    background-image: url('../background.jpg');
+    height: 80vh;     
+    background-image:url('../Components/whatsapp_background.jpg');
     overflow-y: scroll;
 }
 .chatroom-inputfeild{
@@ -97,4 +97,90 @@
     background-color: #ffffff;
     outline:none;
     border:none;
+}
+.chatroom-chat-text::before{
+    content: '';
+   position: relative;
+    width: 0; 
+  height: 0; 
+  right: 5px;
+  top:-5px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;  
+  border-right:10px solid #ffffff; 
+    display: block;
+    transform: rotate(-90deg);
+    margin:0px;
+}
+
+
+.chatroom-chat-text{  
+    border-radius: 5px;
+    text-align: center;
+    margin:20px 30px;
+    max-width: 200px;
+    background-color: rgb(255, 255, 255);
+    height: 80px;
+}
+
+.chatroom-chat-text span{
+    position: relative;
+    top:-20px;
+    font-size: 12.8px;
+}
+.chatroom-chat-text .chat-body{
+    position: relative;
+    top:-15px;
+    font-size: 15px;
+}
+.chatroom-chat-text .chat-footer{
+    position: relative;
+    top:-25px;
+    left: 60px;
+    font-size: 10px;
+}
+
+
+
+
+.chatroom-chat-text-admin::before{
+    content: '';
+   position: relative;
+    width: 0; 
+  height: 0; 
+  left: 195px;
+  top:-5px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;  
+  border-right:10px solid #c5f5c9; 
+    display: block;
+    transform: rotate(-90deg);
+    margin:0px;
+}
+
+
+.chatroom-chat-text-admin{  
+    border-radius: 5px;
+    text-align: center;
+    margin-left:700px;
+    max-width: 200px;
+    background-color: rgb(199, 247, 197);
+    height: 80px;
+}
+
+.chatroom-chat-text-admin span{
+    position: relative;
+    top:-20px;
+    font-size: 12.8px;
+}
+.chatroom-chat-text-admin .chat-body{
+    position: relative;
+    top:-15px;
+    font-size: 15px;
+}
+.chatroom-chat-text-admin .chat-footer{
+    position: relative;
+    top:-25px;
+    left: 70px;
+    font-size: 10px;
 }

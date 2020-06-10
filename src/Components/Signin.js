@@ -39,6 +39,7 @@ class Signin extends Component {
       country: this.state.country,
       phone: this.state.phone,
     };
+    
     await socket.emit('user', user);
     this.props.userDetail(user);
     this.setState({ username: '', country: '', phone: '' });

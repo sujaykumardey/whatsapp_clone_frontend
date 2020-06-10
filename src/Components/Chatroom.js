@@ -9,7 +9,20 @@ import SendIcon from '@material-ui/icons/Send';
 import './Sidebar.css'
 
 class Chatroom extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+
+        }
+    }
     render() {
+        const result=this.props.chat.map((chat)=>{
+            return <div className={"chatroom-chat-text"+(this.props.phone===chat.phone?"-admin":"")}>
+                        <span className="chat-header">{chat.phone} {chat.sender}</span>
+                        <p className="chat-body">{chat.text}</p>
+                        <p className="chat-footer">{chat.timestamp}</p>
+                    </div>
+        })
         return (
             <div className="chatroom-main-container">
                 <div className="chatroom-header"> 
@@ -29,7 +42,7 @@ class Chatroom extends Component {
                     </div>
                 </div>
                 <div className="chatroom-chat">
-                        
+                        {result}
                 </div>
                 <div className="chatroom-inputfeild">
             
