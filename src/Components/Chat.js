@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import socketIOClient from 'socket.io-client';
+import { connect } from 'react-redux';
+import { getAllUser } from '../actions/postActions';
+import {Redirect} from 'react-router-dom';
 import Sidebar from './Sidebar'
 import Chatroom from './Chatroom'
 import './Sidebar.css'
-export const io = socketIOClient('http://localhost:4000');
+import {socket} from './Signin'
 class Chat extends Component {
   constructor(props) {
     super(props);
@@ -11,22 +13,27 @@ class Chat extends Component {
       count: null,
     };
   }
+  componentDidUpdate(){
+    if(localStorage.admin==='undefined') return <Redirect to="/" />
+  }
 
-  componentDidMount(){
-    io.on('sujay', (data) => {
-      console.log(data);
-    });
-    
+  componentWillMount(){  
+    fetch('http://localhost:4000/api/users')
+    .then(response => response.json())
+    .then(json => console.log(json))
+   
+    socket.on('userdata',(data)=>{
+      console.log(data)
+      this.props.getAllUser(data);
+    })
 
-
-  } 
+}
 
   render() {
-   
-
+    
     return (
       <div className="chatwindow">
-       <Sidebar />
+       <Sidebar obj={this.props.users} />
        <Chatroom />
       </div>
     );
@@ -35,5 +42,11 @@ class Chat extends Component {
 
 
 
-export default Chat;
+const mapStateToProps = (state) => ({
+  users:state.userchat.user,
+});
 
+
+export default connect(mapStateToProps, {
+  getAllUser,
+})(Chat);

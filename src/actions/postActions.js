@@ -1,7 +1,7 @@
 import {
   ALL_USER
 } from './types';
-import {io} from '../Components/Chat'
+import {socket} from '../Components/Signin'
 
 // export const getAllUser = () => (dispatch) => {
 //   socket.on('users_detail',(user) => {
@@ -13,7 +13,10 @@ import {io} from '../Components/Chat'
 //   });
 // };
 
-// socket.on('users detail',(data)=>{
-//   console.log(data)
-// })
+export const getAllUser=(data)=>(dispatch)=>{
+  dispatch({
+          type: ALL_USER,
+          payload: data,
+        });
+}
 

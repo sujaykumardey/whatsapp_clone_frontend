@@ -1,1 +1,3 @@
-export const ALL_USER = 'FETCH_CRYPTO';
+export const ALL_USER = 'ALL_USER';
+export const ADD_ADMIN='ADD_ADMIN'
+export const ALL_CHAT='ALL_CHAT'
