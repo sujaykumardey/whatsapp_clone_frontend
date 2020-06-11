@@ -4,6 +4,7 @@ import { getAllUser } from '../actions/postActions';
 import {Redirect} from 'react-router-dom';
 import Sidebar from './Sidebar'
 import Chatroom from './Chatroom'
+import Defaultchatroom from './Defaultchatroom'
 import './Sidebar.css'
 import {socket} from './Signin'
 
@@ -17,7 +18,7 @@ class Chat extends Component {
     };
   }
   componentDidUpdate(){
-    if(localStorage.admin==='undefined') return <Redirect to="/" />
+    
   }
 
   componentWillMount(){  
@@ -33,11 +34,13 @@ class Chat extends Component {
 }
 
   render() {
-    
+    console.log(this.props.chats,'hello all i am here')
+    if(this.props.admin===undefined) return <Redirect to="/" />
     return (
       <div className="chatwindow">
        <Sidebar obj={this.props.users} />
-       <Chatroom chat={this.props.chats} phone={this.props.admin.phone!==undefined ? this.props.admin.phone :null} />
+       {this.props.chats!==undefined ?<Chatroom chat={this.props.chats} phone={this.props.admin.phone} />:
+            <Defaultchatroom />}
       </div>
     );
   }
