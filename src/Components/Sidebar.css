@@ -140,6 +140,7 @@
 .chatroom-chat-text-admin {
   border-radius: 5px;
   text-align: center;
+  margin:20px 30px;
   margin-left: 700px;
   max-width: 200px;
   background-color: rgb(199, 247, 197);
@@ -167,8 +168,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 200px;
-    flex-direction: column;   
+    flex-direction: column; 
+    background-color: #f9f8fa;  
 }
 
 .default-chat-page img{
