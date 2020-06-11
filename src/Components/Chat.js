@@ -7,10 +7,6 @@ import Chatroom from './Chatroom'
 import './Sidebar.css'
 import {socket} from './Signin'
 
-var obj=[{phone:"8776234672",sender:"sujay dey",text:"hello whats up",timestamp:"12:00am"},
-         {phone:"8776234679",sender:"sujay dey",text:"hello whats up",timestamp:"12:00am"},
-          {phone:"8776234678",sender:"sujay dey",text:"hello whats up",timestamp:"12:00am"},
-          {phone:"9939108702",sender:"sujay dey",text:"hello whats up",timestamp:"12:00am"}]
 
 
 class Chat extends Component {

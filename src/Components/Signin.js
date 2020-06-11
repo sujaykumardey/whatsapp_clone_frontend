@@ -48,7 +48,6 @@ class Signin extends Component {
       })  
     .then((data) => data.json())
     .then((data) =>{
-            console.log(data)
             this.props.userDetail(data);
     });   
     
