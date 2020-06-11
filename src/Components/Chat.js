@@ -41,7 +41,7 @@ class Chat extends Component {
     return (
       <div className="chatwindow">
        <Sidebar obj={this.props.users} />
-       <Chatroom chat={obj} phone={this.props.admin.phone!==undefined ? this.props.admin.phone :null} />
+       <Chatroom chat={this.props.chats} phone={this.props.admin.phone!==undefined ? this.props.admin.phone :null} />
       </div>
     );
   }
@@ -52,6 +52,7 @@ class Chat extends Component {
 const mapStateToProps = (state) => ({
   users:state.userchat.user,
   admin:state.userchat.admin,
+  chats:state.chats.chat,
 });
 
 

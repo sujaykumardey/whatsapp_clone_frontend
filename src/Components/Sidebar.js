@@ -20,7 +20,7 @@ class Sidebar extends Component {
 
   render() {
       
-       console.log(this.props.users,'dkfjsldkfjsdl')
+      
 
     return (
       <div className="sidebar">
@@ -41,7 +41,7 @@ class Sidebar extends Component {
 
         <div className="chatroom">
             <div className="chatroom-participants">
-            {this.props.obj===undefined ? null :this.props.obj.map(detail=><Participant  image={detail.url} name={detail.username} phone={detail.phone} />)}        
+            {this.props.obj===undefined ? null :this.props.obj.map(detail=><Participant  image={detail.url} id={detail._id} name={detail.username} phone={detail.phone} />)}        
             </div>
         </div>
       </div>
@@ -50,6 +50,8 @@ class Sidebar extends Component {
     );
   }
 }
+
+
 
 
 export default Sidebar;

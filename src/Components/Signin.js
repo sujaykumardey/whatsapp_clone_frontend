@@ -39,9 +39,19 @@ class Signin extends Component {
       country: this.state.country,
       phone: this.state.phone,
     };
+    fetch('http://localhost:4000/api/signin',{
+        method: 'POST',
+        body: JSON.stringify(user),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      })  
+    .then((data) => data.json())
+    .then((data) =>{
+            console.log(data)
+            this.props.userDetail(data);
+    });   
     
-    await socket.emit('user', user);
-    this.props.userDetail(user);
     this.setState({ username: '', country: '', phone: '' });
     }
     catch(error){
