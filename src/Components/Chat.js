@@ -38,7 +38,7 @@ class Chat extends Component {
     if(this.props.admin===undefined) return <Redirect to="/" />
     return (
       <div className="chatwindow">
-       <Sidebar obj={this.props.users} />
+       <Sidebar obj={this.props.users} name={this.props.admin.username} />
        {this.props.chats!==undefined ?<Chatroom chat={this.props.chats} phone={this.props.admin.phone} />:
             <Defaultchatroom />}
       </div>

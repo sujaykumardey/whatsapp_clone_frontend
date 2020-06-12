@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Avatar } from '@material-ui/core';
+import { Avatar,Typography } from '@material-ui/core';
 import MoreVertOutlinedIcon from '@material-ui/icons/MoreVertOutlined';
 import SearchIcon from '@material-ui/icons/Search';
 import { IconButton } from '@material-ui/core';
@@ -62,9 +62,12 @@ class Chatroom extends Component {
     return (
       <div className="chatroom-main-container">
         <div className="chatroom-header">
+          <div style={{width:"200px",display:"flex",alignItems:"center"}}>
           <IconButton color="inherit" style={{ outline: 'none' }}>
             <Avatar />
           </IconButton>
+          <Typography>{this.props.current_id===undefined ? null :this.props.current_id.name}</Typography>
+          </div>
           <div className="header-side-icon">
             <IconButton color="inherit" style={{ outline: 'none' }}>
               <SearchIcon />
@@ -89,7 +92,7 @@ class Chatroom extends Component {
             />
             <IconButton color="inherit" style={{ outline: 'none' }}>
               <SendIcon
-                id={this.props.current_id}
+                id={this.props.current_id===undefined ? null : this.props.current_id.id}
                 onClick={(e) =>
                   this.handleSend(
                     e,

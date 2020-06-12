@@ -13,14 +13,18 @@ class Participant extends Component {
         }
     }
 
-handleClick=(e)=>{  
-   this.props.userChat(e.target.id);
+handleClick=(e,name)=>{  
+   const curr_user={
+       id:e.target.id,
+       name,
+   }
+   this.props.userChat(curr_user);
 }
     render() {
         
         return (
             <>
-            <div className="participant-detail" key={this.props.phone} id={this.props.id} onClick={this.handleClick}>
+            <div className="participant-detail" key={this.props.phone} id={this.props.id} onClick={(e)=>this.handleClick(e,this.props.name)}>
                 <Avatar alt="Remy Sharp" src={this.props.image} />
                 <Typography style={{marginLeft:"10px"}}>{this.props.name}</Typography>
                                 

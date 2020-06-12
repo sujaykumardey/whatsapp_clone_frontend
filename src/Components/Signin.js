@@ -131,9 +131,8 @@ class Signin extends Component {
 
               <InputLabel
                 id="standard-basic-country"
-                value="Country"
-                label="Select"
-              ></InputLabel>
+                   
+              >Select Country</InputLabel>
               <Select
                 value={this.state.country}
                 onChange={(e) => this.setState({ country: e.target.value })}

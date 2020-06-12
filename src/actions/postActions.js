@@ -1,8 +1,8 @@
 import { ALL_USER, ALL_CHAT,CURR_CHAT_ID } from './types';
 
-export const userChat = (id) => (dispatch) => {
+export const userChat = (user) => (dispatch) => {
  
-  fetch(`http://localhost:4000/api/chat/${id}`, {
+  fetch(`http://localhost:4000/api/chat/${user.id}`, {
     method: 'GET',
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
@@ -15,9 +15,10 @@ export const userChat = (id) => (dispatch) => {
         payload: data,
       }))
     .then(()=>{
+      console.log(user,'user display')
       dispatch({
         type: CURR_CHAT_ID,
-        payload: id,
+        payload: user,
       })
     })
 };

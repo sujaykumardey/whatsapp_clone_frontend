@@ -25,7 +25,7 @@ class Sidebar extends Component {
     return (
       <div className="sidebar">
         <div className="header">
-          <Avatar />
+          <Avatar>{this.props.name[0].toUpperCase()}</Avatar>
           <div className="header-side-icon">
             <DonutLargeOutlinedIcon />
             <ChatOutlinedIcon />
