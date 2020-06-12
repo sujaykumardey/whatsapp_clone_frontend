@@ -13,8 +13,7 @@ class Participant extends Component {
         }
     }
 
-handleClick=(e)=>{
-  
+handleClick=(e)=>{  
    this.props.userChat(e.target.id);
 }
     render() {

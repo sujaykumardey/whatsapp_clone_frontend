@@ -1,4 +1,4 @@
-import { ALL_USER, ALL_CHAT } from './types';
+import { ALL_USER, ALL_CHAT,CURR_CHAT_ID } from './types';
 
 export const userChat = (id) => (dispatch) => {
  
@@ -13,8 +13,13 @@ export const userChat = (id) => (dispatch) => {
       dispatch({
         type: ALL_CHAT,
         payload: data,
+      }))
+    .then(()=>{
+      dispatch({
+        type: CURR_CHAT_ID,
+        payload: id,
       })
-    );
+    })
 };
 
 export const getAllUser = (data) => (dispatch) => {
