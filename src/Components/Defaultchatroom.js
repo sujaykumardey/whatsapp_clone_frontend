@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Avatar } from '@material-ui/core';
 import './Sidebar.css';
 class Defaultchatroom extends Component {
   render() {
@@ -19,6 +18,5 @@ class Defaultchatroom extends Component {
   }
 }
 
-Defaultchatroom.propTypes = {};
 
 export default Defaultchatroom;

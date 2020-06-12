@@ -26,7 +26,6 @@ class Chatroom extends Component {
   }
 
   handleSend = (e, name, phone) => {
-    console.log(e.target.id, name, this.state.message);
     const user = {
       id: e.target.id,
       phone: phone,
@@ -52,7 +51,7 @@ class Chatroom extends Component {
                 }
               >
                 <span className="chat-header">
-                  {chat.phone} {chat.sender}
+                  {chat.phone}{'   ~'} {chat.sender}
                 </span>
                 <p className="chat-body">{chat.text}</p>
                 <p className="chat-footer">{chat.timestamp}</p>

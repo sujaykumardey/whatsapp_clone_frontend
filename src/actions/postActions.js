@@ -15,7 +15,6 @@ export const userChat = (user) => (dispatch) => {
         payload: data,
       }))
     .then(()=>{
-      console.log(user,'user display')
       dispatch({
         type: CURR_CHAT_ID,
         payload: user,
