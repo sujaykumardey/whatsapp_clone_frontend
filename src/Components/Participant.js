@@ -14,7 +14,7 @@ class Participant extends Component {
     }
 
 handleClick=(e)=>{
-   console.log(e.target.id)
+  
    this.props.userChat(e.target.id);
 }
     render() {
