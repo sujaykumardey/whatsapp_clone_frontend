@@ -1,13 +1,15 @@
-import { ALL_USER, ALL_CHAT,CURR_CHAT_ID } from './types';
+import { ALL_USER, ALL_CHAT,CURR_CHAT_ID,USER_REGISTRATION,USER_SIGNIN } from './types';
+import {
+  RegistrationUser,signinUser
+  } from '../endpoints/API';
+
+const {api}=require('../endpoints/API')
+
+
+
 
 export const userChat = (user) => (dispatch) => {
- 
-  fetch(`http://localhost:4000/api/chat/${user.id}`, {
-    method: 'GET',
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-  })
+   fetch(`${api}/api/chat/${user.id}`)
     .then((res) => res.json())
     .then((data) =>
       dispatch({
@@ -21,6 +23,28 @@ export const userChat = (user) => (dispatch) => {
       })
     })
 };
+
+export const userRegistration = (data) => (dispatch) => {
+  RegistrationUser(data).then((user) => {
+    console.log(user)
+    dispatch({
+      type: USER_REGISTRATION,
+      payload: user,
+    });
+  });
+};
+
+
+export const userSignin = (data) => (dispatch) => {
+  signinUser(data).then((user) => {
+    console.log(user)
+    dispatch({
+      type: USER_SIGNIN,
+      payload: user,
+    });
+  });
+};
+
 
 export const getAllUser = (data) => (dispatch) => {
   dispatch({
