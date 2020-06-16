@@ -17,7 +17,7 @@ export default function (state = initialState, action) {
     case USER_SIGNIN:
         return {
           ...state,
-          admin: action.payload,
+          admin_id: action.payload,
         };
 
     case ALL_USER:

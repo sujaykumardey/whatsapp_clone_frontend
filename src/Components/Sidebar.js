@@ -8,9 +8,6 @@ import Participant from './Participant'
 import './Sidebar.css';
 
 
-
-
-
 class Sidebar extends Component {
   constructor(props){
     super(props);
@@ -18,9 +15,7 @@ class Sidebar extends Component {
   }
 
 
-  render() {
-      
-      
+  render() {    
 
     return (
       <div className="sidebar">

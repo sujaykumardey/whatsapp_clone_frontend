@@ -109,7 +109,7 @@ class Chatroom extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  admin: state.userchat.admin,
+  admin: state.userchat.admin_id,
   current_id:state.userchat.current_id,
 });
 

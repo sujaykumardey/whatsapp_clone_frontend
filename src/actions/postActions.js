@@ -8,8 +8,13 @@ const {api}=require('../endpoints/API')
 
 
 
-export const userChat = (user) => (dispatch) => {
-   fetch(`${api}/api/chat/${user.id}`)
+export const userChat = (user,token) => (dispatch) => {
+   fetch(`${api}/api/chat/${user.id}`,{
+     method: 'GET',
+      headers: {
+     "x-auth-token": `${token}`,     
+     "Content-type": "application/json; charset=UTF-8",
+}})
     .then((res) => res.json())
     .then((data) =>
       dispatch({

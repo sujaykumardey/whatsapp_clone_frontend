@@ -18,7 +18,7 @@ handleClick=(e,name)=>{
        id:e.target.id,
        name,
    }
-   this.props.userChat(curr_user);
+   this.props.userChat(curr_user,this.props.admin.token);
 }
     render() {
         
@@ -36,10 +36,12 @@ handleClick=(e,name)=>{
 }
 
 
+const mapStateToProps = (state) => ({
+    admin: state.userchat.admin_id,
+     });
 
 
 
-
-export default connect(null, {
+export default connect(mapStateToProps, {
     userChat,
   })(Participant);

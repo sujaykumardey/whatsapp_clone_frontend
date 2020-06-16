@@ -9,10 +9,10 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import { Button } from '@material-ui/core';
-import {userRegistration,userSignin} from "../actions/postActions"
+import { userRegistration, userSignin } from '../actions/postActions';
 import './Signin.css';
 import { Redirect } from 'react-router-dom';
-const {api}=require('../endpoints/API')
+const { api } = require('../endpoints/API');
 export const socket = socketIOClient(`${api}`);
 
 class Signin extends Component {
@@ -21,9 +21,9 @@ class Signin extends Component {
     this.state = {
       username: '',
       phone: '',
-      password:'',
-      regis:false,
-      success:''
+      password: '',
+      regis: false,
+      success: '',
     };
   }
 
@@ -37,45 +37,39 @@ class Signin extends Component {
 
   userSignin = async (e) => {
     e.preventDefault();
-    try{
-    const user = {
-      phone: this.state.phone,
-      password:this.state.password
-    };
-     this.props.userSignin(user);
-   
-    
-    this.setState({ phone: '',password:'' });
-    }
-    catch(error){
-        if(error) return <Redirect to='/' />
+    try {
+      const user = {
+        phone: this.state.phone,
+        password: this.state.password,
+      };
+      this.props.userSignin(user);
+
+      this.setState({ phone: '', password: '' });
+    } catch (error) {
+      if (error) return <Redirect to="/" />;
     }
   };
-
-
 
   userRegistration = async (e) => {
     e.preventDefault();
-    try{
-    const user = {
-      username: this.state.username,
-      phone: this.state.phone,
-      password:this.state.password
-    };
-    this.props.userRegistration(user);
-    // this.setState({regis:true})
-    this.setState({ username: '', country: '', phone: '' ,password:''});
-    }
-    catch(error){
-        if(error) return <Redirect to='/' />
+    try {
+      const user = {
+        username: this.state.username,
+        phone: this.state.phone,
+        password: this.state.password,
+      };
+      this.props.userRegistration(user);
+      // this.setState({regis:true})
+      this.setState({ username: '', country: '', phone: '', password: '' });
+    } catch (error) {
+      if (error) return <Redirect to="/" />;
     }
   };
 
-
   render() {
-    if (this.props.admin!== undefined) return <Redirect to="/chat" />;
-    
-    
+    console.log(this.props.auth)
+    if (this.props.auth !== undefined) return <Redirect to="/chat" />;
+
     return (
       <div className="navbar-main">
         <AppBar
@@ -116,139 +110,123 @@ class Signin extends Component {
             >
               DOWNLOAD
             </Typography>
-                   
+
             <Typography
               className="heading-whatsapp"
               color="inherit"
               style={{ marginRight: '90px', fontSize: '15px' }}
-              onClick={()=>this.setState({regis:false})}
+              onClick={() => this.setState({ regis: false })}
             >
               REGISTER
             </Typography>
 
             <Typography
-            className="heading-whatsapp"
+              className="heading-whatsapp"
               color="inherit"
               style={{ marginRight: '90px', fontSize: '15px' }}
-              onClick={()=>this.setState({regis:true})}
+              onClick={() => this.setState({ regis: true })}
             >
               SIGN IN
             </Typography>
-
-
           </Toolbar>
         </AppBar>
 
-        {this.state.regis===false ? 
-     
-     <div className="login-main-page">
-        <div className="login-page">
-          <img
-            src="http://pngimg.com/uploads/whatsapp/whatsapp_PNG20.png"
-            alt="Kiwi standing on oval"
-            style={{ width: '100px', height: '100px' }}
-          />
-          <Typography style={{ fontSize: '25px' }}>Register</Typography>
-          {this.props.successAlert===undefined ?null:<Typography style={{color:"red"}}>{this.props.successAlert.username}</Typography>}
-          <form className="login-input" noValidate autoComplete="off">
-            <TextField
-              id="standard-basic"
-              value={this.state.username}
-              onChange={this.handleUser}
-              label="User Name"
-              style={{ width: '300px' }}
-            />
+        {this.state.regis === false ? (
+          <div className="login-main-page">
+            <div className="login-page">
+              <img
+                src="http://pngimg.com/uploads/whatsapp/whatsapp_PNG20.png"
+                alt="Kiwi standing on oval"
+                style={{ width: '100px', height: '100px' }}
+              />
+              <Typography style={{ fontSize: '25px' }}>Register</Typography>
+              {this.props.successAlert === undefined ? null : (
+                <Typography style={{ color: 'red' }}>
+                  {this.props.successAlert.username}
+                </Typography>
+              )}
+              <form className="login-input" noValidate autoComplete="off">
+                <TextField
+                  id="standard-basic"
+                  value={this.state.username}
+                  onChange={this.handleUser}
+                  label="User Name"
+                  style={{ width: '300px' }}
+                />
 
-            {/* <InputLabel
-              id="demo-simple-select-label"
-              ></InputLabel>
-            <Select
-              value={this.state.country}
-              onChange={(e) => this.setState({ country: e.target.value })}
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              style={{ width: '300px'}}
-            >
-              <em>Country</em>
-              <MenuItem value={'INDIA'}>INDIA</MenuItem>
-              <MenuItem value={'AUSTRALIA'}>AUSTRALIA</MenuItem>
-              <MenuItem value={'ENGLAND'}>ENGLAND</MenuItem>
-            </Select> */}
-            <TextField
-              id="standard-basic-phone"
-              value={this.state.phone}
-              onChange={this.handlePhone}
-              label="Phone"
-              style={{ width: '300px' }}
-            />
-            <TextField
-              id="standard-basic-phone"
-              value={this.state.password}
-              onChange={(e)=>this.setState({password:e.target.value})}
-              label="password"
-              type="password"
-              style={{ width: '300px' }}
-            />
-
-          </form>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={this.userRegistration}
-            style={{ marginTop: '20px' }}
-          >
-            Register
-          </Button>
-        </div>
+                <TextField
+                  id="standard-basic-phone"
+                  value={this.state.phone}
+                  onChange={this.handlePhone}
+                  label="Phone"
+                  style={{ width: '300px' }}
+                />
+                <TextField
+                  id="standard-basic-phone"
+                  value={this.state.password}
+                  onChange={(e) => this.setState({ password: e.target.value })}
+                  label="password"
+                  type="password"
+                  style={{ width: '300px' }}
+                />
+              </form>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={this.userRegistration}
+                style={{ marginTop: '20px' }}
+              >
+                Register
+              </Button>
+            </div>
+          </div>
+        ) : (
+          <div className="login-main-page">
+            <div className="login-page">
+              <img
+                src="http://pngimg.com/uploads/whatsapp/whatsapp_PNG20.png"
+                alt="Kiwi standing on oval"
+                style={{ width: '100px', height: '100px' }}
+              />
+              <Typography style={{ fontSize: '25px' }}>Sign in</Typography>
+              
+              <form className="login-input" noValidate autoComplete="off">
+                <TextField
+                  id="standard-basic-phone"
+                  value={this.state.phone}
+                  onChange={this.handlePhone}
+                  label="Phone"
+                  style={{ width: '300px' }}
+                />
+                <TextField
+                  id="standard-basic-phone"
+                  value={this.state.password}
+                  onChange={(e) => this.setState({ password: e.target.value })}
+                  label="password"
+                  type="password"
+                  style={{ width: '300px' }}
+                />
+              </form>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={this.userSignin}
+                style={{ marginTop: '20px' }}
+              >
+                Login
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
-    :
-    <div className="login-main-page">
-    <div className="login-page">
-      <img
-        src="http://pngimg.com/uploads/whatsapp/whatsapp_PNG20.png"
-        alt="Kiwi standing on oval"
-        style={{ width: '100px', height: '100px' }}
-      />
-      <Typography style={{ fontSize: '25px' }}>Sign in</Typography>
-      {this.props.successAlert===undefined ?null:<Typography style={{color:"red"}}>{this.props.successAlert.username}</Typography>}
-      <form className="login-input" noValidate autoComplete="off">
-        <TextField
-          id="standard-basic-phone"
-          value={this.state.phone}
-          onChange={this.handlePhone}
-          label="Phone"
-          style={{ width: '300px' }}
-        />
-        <TextField
-              id="standard-basic-phone"
-              value={this.state.password}
-              onChange={(e)=>this.setState({password:e.target.value})}
-              label="password"
-              type="password"
-              style={{ width: '300px' }}
-            />
-      </form>
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={this.userSignin}
-        style={{ marginTop: '20px' }}
-      >
-        Login
-      </Button>
-    </div>
-  </div>
-}
-
-
-      </div>
-       );
+    );
   }
 }
 
 const mapStateToProps = (state) => ({
-  successAlert:state.userchat.regis,
+  successAlert: state.userchat.regis,
   admin: state.userchat.admin,
+  auth:state.userchat.admin_id
 });
 
 // const mapDispatchToProps = (dispatch) => {
@@ -259,4 +237,6 @@ const mapStateToProps = (state) => ({
 //   };
 // };
 
-export default connect(mapStateToProps,{userRegistration,userSignin})(Signin);
+export default connect(mapStateToProps, { userRegistration, userSignin })(
+  Signin
+);

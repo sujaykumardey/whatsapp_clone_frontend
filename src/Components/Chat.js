@@ -7,6 +7,7 @@ import Chatroom from './Chatroom';
 import Defaultchatroom from './Defaultchatroom';
 import './Sidebar.css';
 import { socket } from './Signin';
+const {api}=require('../endpoints/API')
 
 class Chat extends Component {
   constructor(props) {
@@ -15,19 +16,27 @@ class Chat extends Component {
       count: null,
     };
   }
-  componentDidUpdate() {}
-
-  componentWillMount() {
-    fetch('http://localhost:4000/api/users')
-      .then((response) => response.json())
-      .then((json) => {});
-
-    socket.on('userdata', (data) => {
-      this.props.getAllUser(data);
-    });
+  componentDidUpdate() {
+    
+  }
+  componentDidMount() {
+    fetch(`${api}/api/users`,{
+        method: 'GET',
+        headers: {
+        "x-auth-token": `${this.props.admin.token}`,     
+        "Content-type": "application/json; charset=UTF-8",
+        }})
+        .then((response) => response.json())
+        .then((json) => {});
+  
+      socket.on('userdata', (data) => {
+        console.log(data,'hello');
+        this.props.getAllUser(data);
+      });
   }
 
   render() {
+  
     if (this.props.admin === undefined) return <Redirect to="/" />;
     return (
       <div className="chatwindow">
@@ -44,7 +53,7 @@ class Chat extends Component {
 
 const mapStateToProps = (state) => ({
   users: state.userchat.user,
-  admin: state.userchat.admin,
+  admin: state.userchat.admin_id,
   chats: state.chats.chat,
 });
 
