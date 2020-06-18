@@ -67,7 +67,7 @@ class Signin extends Component {
   };
 
   render() {
-    console.log(this.props.auth)
+   
     if (this.props.auth !== undefined) return <Redirect to="/chat" />;
 
     return (

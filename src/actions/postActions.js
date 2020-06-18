@@ -1,6 +1,6 @@
 import { ALL_USER, ALL_CHAT,CURR_CHAT_ID,USER_REGISTRATION,USER_SIGNIN } from './types';
 import {
-  RegistrationUser,signinUser
+  RegistrationUser,signinUser,mediafileUpload
   } from '../endpoints/API';
 
 const {api}=require('../endpoints/API')
@@ -31,7 +31,6 @@ export const userChat = (user,token) => (dispatch) => {
 
 export const userRegistration = (data) => (dispatch) => {
   RegistrationUser(data).then((user) => {
-    console.log(user)
     dispatch({
       type: USER_REGISTRATION,
       payload: user,
@@ -42,8 +41,7 @@ export const userRegistration = (data) => (dispatch) => {
 
 export const userSignin = (data) => (dispatch) => {
   signinUser(data).then((user) => {
-    console.log(user)
-    dispatch({
+     dispatch({
       type: USER_SIGNIN,
       payload: user,
     });
@@ -57,3 +55,15 @@ export const getAllUser = (data) => (dispatch) => {
     payload: data,
   });
 };
+
+
+export const mediaFileUpload = (data) =>{
+  console.log(data,'sjdflsdjfsdjf');
+  mediafileUpload(data).then((user) =>(dispatch)=> {
+   dispatch({
+     type: ALL_CHAT,
+    payload: user,
+    });
+  });
+
+}

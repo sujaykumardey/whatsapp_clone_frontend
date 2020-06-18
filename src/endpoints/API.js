@@ -30,4 +30,15 @@ export const RegistrationUser = (data) => {
     return result;
   };
 
+  export const mediafileUpload=(file)=>{
+    const result=fetch(`${api}/api/fileupload`, {
+    method: 'POST',
+    body: file, 
+    
+  })
+  .then(response => response.json())
+  .then(data => data)
+  return result;
+  
+}
   

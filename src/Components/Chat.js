@@ -9,6 +9,8 @@ import './Sidebar.css';
 import { socket } from './Signin';
 const {api}=require('../endpoints/API')
 
+
+
 class Chat extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +18,8 @@ class Chat extends Component {
       count: null,
     };
   }
+
+  
   componentDidUpdate() {
     
   }
@@ -30,14 +34,13 @@ class Chat extends Component {
         .then((json) => {});
   
       socket.on('userdata', (data) => {
-        console.log(data,'hello');
-        this.props.getAllUser(data);
+         this.props.getAllUser(data);
       });
   }
 
   render() {
-  
-    if (this.props.admin === undefined) return <Redirect to="/" />;
+    
+    if (this.props.admin === undefined ) return <Redirect to="/" />;
     return (
       <div className="chatwindow">
         <Sidebar obj={this.props.users} name={this.props.admin.username} />
@@ -46,6 +49,7 @@ class Chat extends Component {
         ) : (
           <Defaultchatroom />
         )}
+        
       </div>
     );
   }
