@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Chatroom from './Chatroom';
 import Defaultchatroom from './Defaultchatroom';
+import {LoadingScreen,CustomizedProgressBars }from './LoadingScreen';
 import './Sidebar.css';
 import { socket } from './Signin';
 const {api}=require('../endpoints/API')
@@ -41,7 +42,7 @@ class Chat extends Component {
   render() {
     
     if (this.props.admin === undefined ) return <Redirect to="/" />;
-    return (
+    return (this.props.users===undefined?<div style={{width:"100vw",height:"100vh",display:"flex",justifyContent:"center",alignItems:"center"}} ><div><LoadingScreen /><CustomizedProgressBars /></div> </div>:
       <div className="chatwindow">
         <Sidebar obj={this.props.users} name={this.props.admin.username} />
         {this.props.chats !== undefined ? (

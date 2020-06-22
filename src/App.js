@@ -6,7 +6,6 @@ import Signin from '../src/Components/Signin';
 import Chat from '../src/Components/Chat';
 import './App.css';
 
-
 function App() {  
   return (
     <>
@@ -18,6 +17,7 @@ function App() {
       </Switch>
     </Router>
     </Provider>
+   
   </>
   );
 }

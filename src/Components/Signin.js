@@ -42,6 +42,7 @@ class Signin extends Component {
         phone: this.state.phone,
         password: this.state.password,
       };
+      
       this.props.userSignin(user);
 
       this.setState({ phone: '', password: '' });
