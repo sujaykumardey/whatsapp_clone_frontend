@@ -5,9 +5,9 @@ export const RegistrationUser = (data) => {
     const result = fetch(`${api}/api/registration`,{
       method: 'POST',
       body: JSON.stringify(data),
-      // headers: {
-      //   "Content-type": "application/json; charset=UTF-8"
-      // }
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
     })
   
       .then((data) => data.json())
@@ -20,9 +20,9 @@ export const RegistrationUser = (data) => {
     const result = fetch(`${api}/api/signin`,{
       method: 'POST',
       body: JSON.stringify(data),
-      // headers: {
-      //   "Content-type": "application/json; charset=UTF-8"
-      // }
+      headers: {
+        "Content-type": "application/json"
+      }
     })
   
       .then((data) => data.json())
