@@ -15,7 +15,8 @@ function App() {
       <PersistGate persistor={persistor}>
       <Switch>
         <Route exact path="/" component={Signin} />
-        <Route exact path="/chat" component={Chat} />      
+        <Route exact path="/chat" component={Chat} />   
+        <Route path="/" component={Chat} />   
       </Switch>
       </PersistGate>
     </Router>

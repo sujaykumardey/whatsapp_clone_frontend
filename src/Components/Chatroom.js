@@ -29,11 +29,18 @@ class Chatroom extends Component {
     });
   }
 
+  Enter = (e) => {
+    if (e.key === 'Enter') {
+      this.handleSend(e, this.props.admin.username, this.props.admin.phone);
+    }
+  };
+
   mediaFiles = (files) => {
     this.setState({ files: files[0] });
   };
 
   handleSend = (e, name, phone) => {
+    e.preventDefault();
     const user = {
       id: e.target.id,
       phone: phone,
@@ -41,9 +48,8 @@ class Chatroom extends Component {
       text: this.state.message,
       timestamp: moment().format('h:mm a'),
     };
-    if (this.state.message !== '' && this.state.message.length >= 0) {
+    if (this.state.message.length >  0) {
       this.setState({ message: '' });
-      console.log(user, 'text');
       socket.emit('chats', user);
     } else if (this.state.file !== null) {
       const file = new FormData();
@@ -69,7 +75,7 @@ class Chatroom extends Component {
                 className={
                   'chatroom-chat-text-box' +
                   (this.props.phone === chat.phone ? '-admin' : '')
-                 }
+                }
               >
                 <span className="chat-header-box">
                   {chat.phone}
@@ -78,17 +84,9 @@ class Chatroom extends Component {
                 {chat.text === undefined && chat.url !== undefined ? (
                   chat.url.substring(chat.url.length - 3, chat.url.length) ===
                   'mp4' ? (
-                    <video
-                      src={chat.url}
-                      type="video/mp4"
-                      controls
-                    />
+                    <video src={chat.url} type="video/mp4" controls />
                   ) : (
-                    <img
-                      src={chat.url}
-                      alt="img"
-                      type="file"
-                      />
+                    <img src={chat.url} alt="img" type="file" />
                   )
                 ) : (
                   <p className="chat-body-box">{chat.text}</p>
@@ -100,42 +98,31 @@ class Chatroom extends Component {
     return (
       <div className="chatroom-main-container">
         <div className="chatroom-header">
-          <div style={{display:"flex"}}
-           >
-            <IconButton color="inherit" 
-            style={{ outline: 'none' }}
-            >
+          <div style={{ display: 'flex' }}>
+            <IconButton color="inherit" style={{ outline: 'none' }}>
               <Avatar />
             </IconButton>
-            <Typography style={{ marginTop: "20px " }}>
+            <Typography style={{ marginTop: '20px ' }}>
               {this.props.current_id === undefined
                 ? null
                 : this.props.current_id.name}
             </Typography>
           </div>
           <div className="header-side-icon">
-            <IconButton color="inherit"
-             style={{ outline: 'none' }}
-             >
+            <IconButton color="inherit" style={{ outline: 'none' }}>
               <SearchIcon />
             </IconButton>
-            <IconButton color="inherit"
-             style={{ outline: 'none' }}
-             >
+            <IconButton color="inherit" style={{ outline: 'none' }}>
               <AttachFileIcon />
             </IconButton>
-            <IconButton color="inherit"
-             style={{ outline: 'none' }}
-             >
+            <IconButton color="inherit" style={{ outline: 'none' }}>
               <MoreVertOutlinedIcon />
             </IconButton>
           </div>
         </div>
         <div className="chatroom-chat">{result}</div>
         <div className="chatroom-inputfeild">
-          <div className="search-feild-footer" 
-          style={{ display: 'flex' }}
-          >
+          <div className="search-feild-footer" style={{ display: 'flex' }}>
             <InsertEmoticonIcon
               style={{ marginRight: '10px', marginTop: '15px' }}
             />
@@ -144,6 +131,12 @@ class Chatroom extends Component {
               value={this.state.message}
               onChange={(e) => this.setState({ message: e.target.value })}
               placeholder="Search or start new chat"
+              onKeyPress={this.Enter}
+              id={
+                this.props.current_id === undefined
+                  ? null
+                  : this.props.current_id.id
+              }
             />
 
             <Dropzone onDrop={this.mediaFiles}>
@@ -164,9 +157,7 @@ class Chatroom extends Component {
               )}
             </Dropzone>
 
-            <IconButton color="inherit"
-             style={{ outline: 'none' }}
-             >
+            <IconButton color="inherit" style={{ outline: 'none' }}>
               <SendIcon
                 id={
                   this.props.current_id === undefined

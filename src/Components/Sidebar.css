@@ -46,6 +46,7 @@
 .chatroom-participants {
   height: 85vh;
   overflow-y: scroll;
+  
 }
 
 .participant-detail:hover {
