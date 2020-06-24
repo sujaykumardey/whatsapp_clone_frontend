@@ -1,5 +1,5 @@
-import { ALL_USER, ADD_ADMIN, CURR_CHAT_ID,USER_REGISTRATION,USER_SIGNIN } from '../actions/types';
-
+import { ALL_USER, ADD_ADMIN, CURR_CHAT_ID,USER_REGISTRATION,USER_SIGNIN,ALL_EXIT } from '../actions/types';
+import storage from 'redux-persist/lib/storage'
 const initialState = {};
 
 export default function (state = initialState, action) {
@@ -30,6 +30,12 @@ export default function (state = initialState, action) {
         ...state,
         current_id: action.payload,
       };
+    case ALL_EXIT:
+       
+      storage.removeItem('persist:root')
+       return {
+        ...state=undefined
+       }
     default:
       return state;
   }

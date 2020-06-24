@@ -56,10 +56,8 @@ export const getAllUser = (data) => (dispatch) => {
   });
 };
 
-
 export const mediaFileUpload = (data) =>{
-  console.log(data,'sjdflsdjfsdjf');
-  mediafileUpload(data).then((user) =>(dispatch)=> {
+   mediafileUpload(data).then((user) =>(dispatch)=> {
    dispatch({
      type: ALL_CHAT,
     payload: user,

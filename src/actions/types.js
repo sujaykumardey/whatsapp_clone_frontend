@@ -5,5 +5,6 @@ export const ALL_CHATS='ALL_CHATS'
 export const CURR_CHAT_ID='CURR_CHAT_ID'
 export const USER_REGISTRATION='USER_REGISTRATION'
 export const USER_SIGNIN='USER_SIGNIN'
+export const ALL_EXIT='ALL_EXIT'
 
 

@@ -7,6 +7,7 @@ import { IconButton } from '@material-ui/core';
 import AttachFileIcon from '@material-ui/icons/AttachFile';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import SendIcon from '@material-ui/icons/Send';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import './Sidebar.css';
 import { socket } from '../Components/Signin';
 import moment from 'moment';
@@ -116,7 +117,7 @@ class Chatroom extends Component {
               <AttachFileIcon />
             </IconButton>
             <IconButton color="inherit" style={{ outline: 'none' }}>
-              <MoreVertOutlinedIcon />
+              <ExitToAppIcon onClick={this.props.Exit} />
             </IconButton>
           </div>
         </div>
@@ -189,6 +190,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     userChat: (chats) => {
       dispatch({ type: 'ALL_CHATS', payload: chats });
+    },
+    Exit: () => {
+      dispatch({ type: 'ALL_EXIT', payload: '' });
     },
     mediaFileUpload,
   };

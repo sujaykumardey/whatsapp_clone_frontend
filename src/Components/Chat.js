@@ -20,11 +20,14 @@ class Chat extends Component {
     };
   }
 
-  
+  componentWillMount(){
+  }
   componentDidUpdate() {
     
   }
   componentDidMount() {
+    if(this.props.admin===undefined) return <Redirect to="/" />
+   
     fetch(`${api}/api/users`,{
         method: 'GET',
         headers: {
