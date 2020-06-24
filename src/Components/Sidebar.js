@@ -11,8 +11,32 @@ import './Sidebar.css';
 class Sidebar extends Component {
   constructor(props){
     super(props);
-    this.state={}
+    this.state={
+      obj:'',
+      suggetions:''
+    }
   }
+  componentWillMount(){
+    this.setState({obj:this.props.obj})
+  }
+  componentDidUpdate(){
+
+  }
+
+  onTextChange=(e)=>{
+    const value=e.target.value;
+    
+    
+    if(value.length > 0){
+      const regex=new RegExp(`^${value}`,'i');
+      const suggestions=this.state.obj.sort().filter(v=>regex.test(v.username));
+      this.setState({obj:suggestions})
+    }else if(value.length===0){
+      this.setState({obj:this.props.obj})
+    }
+   
+  }
+
 
 
   render() {    
@@ -30,13 +54,13 @@ class Sidebar extends Component {
         <div className="search">
           <div className="search-feild">
             <SearchIcon  />
-            <input placeholder="Search or start new chat" />
+            <input placeholder="Search or start new chat" onChange={this.onTextChange} />
         </div>
         </div>
 
         <div className="chatroom">
             <div className="chatroom-participants">
-            {this.props.obj===undefined ? null :this.props.obj.map(detail=><Participant  image={detail.url} id={detail._id} name={detail.username} phone={detail.phone} />)}        
+            {this.state.obj===undefined ? null : this.state.obj.map(detail=><Participant  image={detail.url} id={detail._id} name={detail.username} phone={detail.phone} />)}        
             </div>
         </div>
       </div>
