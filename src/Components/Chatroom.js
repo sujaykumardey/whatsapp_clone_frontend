@@ -52,7 +52,7 @@ class Chatroom extends Component {
     if (this.state.message.length >  0) {
       this.setState({ message: '' });
       socket.emit('chats', user);
-    } else if (this.state.file !== null) {
+    } else if (this.state.file !== null && this.state.message.length===0) {
       const file = new FormData();
       file.append('uploadImage', this.state.files);
 
