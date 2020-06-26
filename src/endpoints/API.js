@@ -1,4 +1,4 @@
-export const api = 'http://localhost:4000';
+export const api = 'https://whatsapp-clonedemo.herokuapp.com';
 
 export const RegistrationUser = (data) => {
   const result = fetch(`${api}/api/registration`, {
