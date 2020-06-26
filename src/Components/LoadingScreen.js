@@ -9,7 +9,8 @@ const BorderLinearProgress = withStyles((theme) => ({
     borderRadius: 5,
   },
   colorPrimary: {
-    backgroundColor: theme.palette.grey[theme.palette.type === 'light' ? 200 : 700],
+    backgroundColor:
+      theme.palette.grey[theme.palette.type === 'light' ? 200 : 700],
   },
   bar: {
     borderRadius: 5,
@@ -36,32 +37,36 @@ const useStylesFacebook = makeStyles((theme) => ({
   },
 }));
 
-
-export  function LoadingScreen() {
+export function LoadingScreen() {
   const classes = useStylesFacebook();
 
   return (
-    <div style={{width:"80vw",display:"flex",justifyContent:"center",marginBottom:"100px"}} > 
-      <div className={classes.root} >
-      <CircularProgress
-        variant="determinate"
-        className={classes.bottom}
-        size={40}
-        thickness={4}
-        
-        value={100}
-      />
-      <CircularProgress
-        variant="indeterminate"
-        disableShrink
-        className={classes.top}
-        classes={{
-          circle: classes.circle,
-        }}
-        size={40}
-        thickness={4}
-        
-      />
+    <div
+      style={{
+        width: '80vw',
+        display: 'flex',
+        justifyContent: 'center',
+        marginBottom: '100px',
+      }}
+    >
+      <div className={classes.root}>
+        <CircularProgress
+          variant="determinate"
+          className={classes.bottom}
+          size={40}
+          thickness={4}
+          value={100}
+        />
+        <CircularProgress
+          variant="indeterminate"
+          disableShrink
+          className={classes.top}
+          classes={{
+            circle: classes.circle,
+          }}
+          size={40}
+          thickness={4}
+        />
       </div>
     </div>
   );
@@ -73,7 +78,7 @@ const useStyles = makeStyles({
   },
 });
 
-export  function CustomizedProgressBars() {
+export function CustomizedProgressBars() {
   const classes = useStyles();
   const [progress, setProgress] = React.useState(0);
 
@@ -94,10 +99,10 @@ export  function CustomizedProgressBars() {
   }, []);
 
   return (
-    <div style={{width:"80vw",display:"flex",justifyContent:"center"}}>
-          <div className={classes.root}>
-             <LinearProgress variant="determinate" value={progress} />
-          </div>
+    <div style={{ width: '80vw', display: 'flex', justifyContent: 'center' }}>
+      <div className={classes.root}>
+        <LinearProgress variant="determinate" value={progress} />
+      </div>
     </div>
   );
 }

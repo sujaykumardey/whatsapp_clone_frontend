@@ -49,18 +49,16 @@ class Chatroom extends Component {
       text: this.state.message,
       timestamp: moment().format('h:mm a'),
     };
-    if (this.state.message.length >  0) {
+    if (this.state.message.length > 0) {
       this.setState({ message: '' });
       socket.emit('chats', user);
-    } else if (this.state.file !== null && this.state.message.length===0) {
+    } else if (this.state.file !== null && this.state.message.length === 0) {
       const file = new FormData();
       file.append('uploadImage', this.state.files);
-
       file.append('id', e.target.id);
       file.append('phone', phone);
       file.append('sender', name);
       file.append('timestamp', moment().format('h:mm a'));
-      console.log(file, 'media');
       this.props.mediaFileUpload(file);
       this.setState({ files: null });
     }
@@ -101,7 +99,13 @@ class Chatroom extends Component {
         <div className="chatroom-header">
           <div style={{ display: 'flex' }}>
             <IconButton color="inherit" style={{ outline: 'none' }}>
-              <Avatar />
+              <Avatar
+                src={
+                  this.props.current_id === undefined
+                    ? null
+                    : this.props.current_id.url
+                }
+              />
             </IconButton>
             <Typography style={{ marginTop: '20px ' }}>
               {this.props.current_id === undefined

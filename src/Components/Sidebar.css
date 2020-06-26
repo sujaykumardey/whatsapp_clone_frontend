@@ -41,6 +41,7 @@
 .participant-detail {
   padding: 10px 16px 10px 16px;
   display: flex;
+  cursor: pointer;
 }
 
 .chatroom-participants {

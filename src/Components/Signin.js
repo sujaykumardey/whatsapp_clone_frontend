@@ -5,9 +5,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
 import { Button } from '@material-ui/core';
 import { userRegistration, userSignin } from '../actions/postActions';
 import './Signin.css';
@@ -42,7 +39,7 @@ class Signin extends Component {
         phone: this.state.phone,
         password: this.state.password,
       };
-      
+
       this.props.userSignin(user);
 
       this.setState({ phone: '', password: '' });
@@ -68,7 +65,6 @@ class Signin extends Component {
   };
 
   render() {
-   
     if (this.props.auth !== undefined) return <Redirect to="/chat" />;
 
     return (
@@ -190,7 +186,7 @@ class Signin extends Component {
                 style={{ width: '100px', height: '100px' }}
               />
               <Typography style={{ fontSize: '25px' }}>Sign in</Typography>
-              
+
               <form className="login-input" noValidate autoComplete="off">
                 <TextField
                   id="standard-basic-phone"
@@ -227,7 +223,7 @@ class Signin extends Component {
 const mapStateToProps = (state) => ({
   successAlert: state.userchat.regis,
   admin: state.userchat.admin,
-  auth:state.userchat.admin_id
+  auth: state.userchat.admin_id,
 });
 
 // const mapDispatchToProps = (dispatch) => {
