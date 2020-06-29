@@ -27,7 +27,7 @@ class Chat extends Component {
       method: 'GET',
       headers: {
         'x-auth-token': `${this.props.admin.token}`,
-        "Content-type": "application/json; charset=UTF-8",
+        'Content-type': 'application/json; charset=UTF-8',
       },
     })
       .then((response) => response.json())

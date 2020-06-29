@@ -21,13 +21,22 @@ class Chatroom extends Component {
     this.state = {
       message: '',
       files: null,
+      current_id:null,
     };
   }
+componentWillMount(){
+  this.setState({current_id:this.props.current_id})
+}
 
-  componentDidUpdate() {
+  componentDidUpdate(prevState) {
     socket.on('userchat', (data) => {
       this.props.userChat(data);
+
     });
+    if(prevState.current_id!==this.props.current_id){
+      this.setState({current_id:this.props.current_id})
+    }
+
   }
 
   Enter = (e) => {
@@ -65,6 +74,7 @@ class Chatroom extends Component {
   };
 
   render() {
+    console.log(this.state.current_id.url,'hai this is')
     const result =
       this.props.chat === undefined
         ? null
@@ -101,16 +111,16 @@ class Chatroom extends Component {
             <IconButton color="inherit" style={{ outline: 'none' }}>
               <Avatar
                 src={
-                  this.props.current_id === undefined
+                  this.state.current_id === undefined
                     ? null
-                    : this.props.current_id.url
+                    : this.state.current_id.url
                 }
               />
             </IconButton>
             <Typography style={{ marginTop: '20px ' }}>
-              {this.props.current_id === undefined
+              {this.state.current_id === undefined
                 ? null
-                : this.props.current_id.name}
+                : this.state.current_id.name}
             </Typography>
           </div>
           <div className="header-side-icon">
@@ -138,9 +148,9 @@ class Chatroom extends Component {
               placeholder="Search or start new chat"
               onKeyPress={this.Enter}
               id={
-                this.props.current_id === undefined
+                this.state.current_id === undefined
                   ? null
-                  : this.props.current_id.id
+                  : this.state.current_id.id
               }
             />
 
@@ -165,9 +175,9 @@ class Chatroom extends Component {
             <IconButton color="inherit" style={{ outline: 'none' }}>
               <SendIcon
                 id={
-                  this.props.current_id === undefined
+                  this.state.current_id === undefined
                     ? null
-                    : this.props.current_id.id
+                    : this.state.current_id.id
                 }
                 onClick={(e) =>
                   this.handleSend(

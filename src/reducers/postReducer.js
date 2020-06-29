@@ -32,6 +32,9 @@ export default function (state = initialState, action) {
         }
         return obj;
       });
+      if (state.current_id.id === action.payload._id) {
+        state.current_id.url = action.payload.url;
+      }
 
       return {
         ...state,
